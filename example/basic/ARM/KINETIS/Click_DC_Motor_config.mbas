@@ -1,0 +1,5 @@
+module Click_DC_Motor_config
+
+include Click_DC_Motor_types
+
+end.

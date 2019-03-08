@@ -1,0 +1,43 @@
+unit Click_DC_Motor_pwm;
+
+uses Click_DC_Motor_types;
+
+function  dcmotor_pwmInit(freq : uint16_t) :  uint32_t; 
+procedure dcmotor_pwmSetDuty(duty : uint16_t); 
+procedure dcmotor_pwmStart(); 
+procedure dcmotor_pwmStop(); 
+
+implementation
+
+function  dcmotor_pwmInit(freq : uint16_t) :  uint32_t; 
+var
+    pwmPeriod : uint32_t;
+begin
+
+    PWM2_Init(5000); 
+    result := 0; 
+
+end;
+
+procedure dcmotor_pwmSetDuty(duty : uint16_t); 
+begin
+
+    PWM2_Set_Duty(duty); 
+
+end;
+
+procedure dcmotor_pwmStart(); 
+begin
+
+    PWM2_Start(); 
+
+end;
+
+procedure dcmotor_pwmStop(); 
+begin
+
+    PWM2_Stop(); 
+
+end;
+
+end.

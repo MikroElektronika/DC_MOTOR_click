@@ -1,0 +1,40 @@
+unit Click_DC_Motor_pwm;
+
+uses Click_DC_Motor_types;
+
+function  dcmotor_pwmInit(freq : uint16_t) :  uint32_t; 
+procedure dcmotor_pwmSetDuty(duty : uint16_t); 
+procedure dcmotor_pwmStart(); 
+procedure dcmotor_pwmStop(); 
+
+implementation
+
+function  dcmotor_pwmInit(freq : uint16_t) :  uint32_t; 
+begin
+
+    result := 0; 
+
+end;
+
+procedure dcmotor_pwmSetDuty(duty : uint16_t); 
+begin
+
+    PWM16bit_Init(_PWM16_PHASE_CORRECT_MODE_8BIT, _PWM16_PRESCALER_16bit_8, _PWM16_NON_INVERTED, duty, 1); 
+
+end;
+
+procedure dcmotor_pwmStart(); 
+begin
+
+    PWM16bit_Start(1); 
+
+end;
+
+procedure dcmotor_pwmStop(); 
+begin
+
+    PWM16bit_Stop(1); 
+
+end;
+
+end.

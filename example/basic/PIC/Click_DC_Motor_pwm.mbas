@@ -1,0 +1,39 @@
+module Click_DC_Motor_pwm
+
+include Click_DC_Motor_types
+
+sub function  dcmotor_pwmInit(dim freq as uint16_t) as uint32_t 
+sub procedure dcmotor_pwmSetDuty(dim duty as uint16_t) 
+sub procedure dcmotor_pwmStart() 
+sub procedure dcmotor_pwmStop() 
+
+implements
+
+sub function  dcmotor_pwmInit(dim freq as uint16_t) as uint32_t 
+dim
+    pwmPeriod as uint32_t
+
+    PWM2_Init(5000) 
+    result = 0 
+
+end sub
+
+sub procedure dcmotor_pwmSetDuty(dim duty as uint16_t) 
+
+    PWM2_Set_Duty(duty) 
+
+end sub
+
+sub procedure dcmotor_pwmStart() 
+
+    PWM2_Start() 
+
+end sub
+
+sub procedure dcmotor_pwmStop() 
+
+    PWM2_Stop() 
+
+end sub
+
+end.

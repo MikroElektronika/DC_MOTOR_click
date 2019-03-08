@@ -1,0 +1,39 @@
+module Click_DC_Motor_pwm
+
+include Click_DC_Motor_types
+
+sub function  dcmotor_pwmInit(dim freq as uint16_t) as uint32_t 
+sub procedure dcmotor_pwmSetDuty(dim duty as uint16_t) 
+sub procedure dcmotor_pwmStart() 
+sub procedure dcmotor_pwmStop() 
+
+implements
+
+sub function  dcmotor_pwmInit(dim freq as uint16_t) as uint32_t 
+dim
+    pwmPeriod as uint32_t
+
+    pwmPeriod = PWM0_Init(freq, ((_PWM_CFG_CLOCK_SRC_SMCLK or _PWM_CFG_OUTPUTMODE_SET) or _PWM_CFG_CHANNEL_4), @_GPIO_MODULE_PWM_TA0_4_A15) 
+    result = pwmPeriod 
+
+end sub
+
+sub procedure dcmotor_pwmSetDuty(dim duty as uint16_t) 
+
+    PWM0_SetDuty(duty, _PWM_CFG_CHANNEL_4) 
+
+end sub
+
+sub procedure dcmotor_pwmStart() 
+
+    PWM0_Start() 
+
+end sub
+
+sub procedure dcmotor_pwmStop() 
+
+    PWM0_Stop() 
+
+end sub
+
+end.
